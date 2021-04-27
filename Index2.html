@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Weather Data</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<a href="index.html">First Page</a>&nbsp<a href="index3.html">3rd Page</a>
+	<script>
+
+	const hPaTOinchofmercury = 0.02953;
+
+	window.onload = function () {
+		getWeather5Day();
+	};
+
+	function getWeather5Day() {
+		var zip = "19130";
+		var apikey = ""; //put your openmap api key here
+		var url = "http://api.openweathermap.org/data/2.5/forecast?zip=" + zip + ",us&units=imperial&APPID=" + apikey;
+		var settings = {
+				"async": true,
+				"crossDomain": true,
+				"url": url,
+				"method": "GET",
+				"headers": {}
+			};
+
+
+		$.ajax(settings).done(function (response) {
+				console.log(response);
+				var city = response.city.name;
+				console.log(city);
+				var temp = [];
+				var pressure = [];
+				var dates = [];
+				for (var i = 0; i < response.list.length; i++) {
+					console.log(i);
+					console.log(response.list[i].main.temp)
+					temp[i] = response.list[i].main.temp;
+					var hPa = response.list[i].main.pressure;
+					pressure[i] = (hPa * hPaTOinchofmercury).toFixed(2);
+					console.log((hPa * hPaTOinchofmercury).toFixed(2));
+					dates[i] = response.list[i].dt_txt.substring(5, 13);
+					console.log(response.list[i].dt_txt);
+				}
+			}
+		)
+	}		
+	</script>
+</body>
+
+</html>
