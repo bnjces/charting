@@ -4,7 +4,7 @@
 <head>
 	<title>Line Chart</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
-	<script src="js/uitls.js"></script>
+	<script src="js/utils.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<style>
 	canvas{
@@ -27,7 +27,7 @@
         
 		function getWeather5Day() {
 			var zip = "19130"
-            var apikey = ""; //put your openmap api key here
+            var apikey = "03d52edef9699dfcf448b44075050d61"; //put your openweathermap api key here
     		var url = "http://api.openweathermap.org/data/2.5/forecast?zip=" + zip + ",us&units=imperial&APPID=" + apikey;
 
             var settings3 = {
@@ -65,7 +65,13 @@
 					            borderColor: window.chartColors.blue,
 					            data: pressure,
 					            fill: false,	
-					            }
+					            }, {
+								label: "Temperature",
+					            backgroundColor: window.chartColors.red,
+								borderColor: window.chartColors.red,
+								data: temp,
+								fill: false,
+								}
 				            ]
 			            },
 			            options: {

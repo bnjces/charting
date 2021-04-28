@@ -4,7 +4,7 @@
 <head>
 	<title>Line Chart</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
-	<script src="js/uitls.js"></script>
+	<script src="js/utils.js"></script>
 	<style>
 	canvas{
 		-moz-user-select: none;
@@ -37,7 +37,7 @@
 					backgroundColor: window.chartColors.red,
 					borderColor: window.chartColors.red,
 					data: [
-						randomScalingFactor(),
+						randomScalingFactor(),		// replace w/ weather API data
 						randomScalingFactor(),
 						randomScalingFactor(),
 						randomScalingFactor(),
@@ -66,7 +66,7 @@
 				responsive: true,
 				title: {
 					display: true,
-					text: 'Chart.js Line Chart'
+					text: 'Chart of Temperature and Humidity'
 				},
 				tooltips: {
 					mode: 'index',
@@ -81,7 +81,7 @@
 						display: true,
 						scaleLabel: {
 							display: true,
-							labelString: 'Month'
+							labelString: 'Days'
 						}
 					}],
 					yAxes: [{
